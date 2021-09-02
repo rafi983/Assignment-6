@@ -1,20 +1,27 @@
+// selecting dom elements
+
 const booksContainer = document.getElementById("books-container");
 const spinner = document.getElementById("spinner");
 const errorDiv = document.getElementById("error-message");
 const resultsFound = document.getElementById("results-found");
+const bookImage = document.getElementById("book-image");
 
-const searchBook = async () => {
+// Searching books
+
+const searchBook = () => {
   const searchField = document.getElementById("search-field");
   const searchFieldText = searchField.value;
 
   if (searchFieldText === "") {
-    errorDiv.innerText = "Search field cannot be empty.";
+    alert("Search field cannot be empty.");
     return;
   }
 
   booksContainer.innerHTML = "";
+  resultsFound.innerText = "";
+  errorDiv.innerText = "";
 
-  const url = `http://openlibrary.org/search.json?q=${searchFieldText}`;
+  const url = `https://openlibrary.org/search.json?q=${searchFieldText}`;
 
   spinner.classList.remove("d-none");
 
@@ -29,6 +36,8 @@ const searchBook = async () => {
     });
 };
 
+// load and display all matched books in UI
+
 const loadBook = (books) => {
   if (books.numFound === 0) {
     errorDiv.innerText = "NO Result Found";
@@ -38,29 +47,43 @@ const loadBook = (books) => {
 
   const allBooks = books.docs;
 
+  if (books.numFound > 0) {
+    resultsFound.innerText = `Total results found: ${books.numFound}`;
+  }
+
   allBooks.forEach((book) => {
     const bookDiv = document.createElement("div");
     bookDiv.classList.add("col");
 
+    if (!book.cover_i) {
+      return;
+    }
+
     bookDiv.innerHTML = `
       <div class="card h-100 rounded-2 p-3 shadow-lg" id="card">   
             <div>
-            <img src = "https://covers.openlibrary.org/b/id/${
+            <img id="book-image" src = "https://covers.openlibrary.org/b/id/${
               book.cover_i
-            }-M.jpg">
-                
-              <h5>Book: ${book.subject ? book.subject[0] : "A book"}</h5>   
-              <h5>Author Name: ${
+            }-M.jpg" >  
+
+              <h4><span class="fw-bolder">Book:</span> ${
+                book.subject ? book.subject[0] : "A book"
+              }</h4>   
+
+              <h5><span class="fw-bolder">Author Name:</span> ${
                 book.author_name ? book.author_name[0] : "A well Known writer"
               }</h5>   
-              <h5>Publisher: ${
+
+              <h5><span class="fw-bolder">Publisher:</span> ${
                 book.publisher ? book.publisher[0] : "No publisher found"
               }</h5>
-              <h5>First Published Year: ${
+
+              <h5><span class="fw-bolder">First Published Year:</span> ${
                 book.first_publish_year
                   ? book.first_publish_year
                   : "Unknown Year"
               }</h5>
+
             </div>
        </div>
     `;
@@ -68,3 +91,5 @@ const loadBook = (books) => {
     booksContainer.appendChild(bookDiv);
   });
 };
+
+//================================ End of Js=============================== //

@@ -1,4 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
 #card {
-  background-color: rgb(255, 252, 205);
-  border-radius: 5px;
+  background-color: #fff;
+}
+#book-image {
+  width: 440px;
+  height: 400px;
+  margin-bottom: 1rem;
 }

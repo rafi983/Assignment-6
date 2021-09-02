@@ -5,48 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Archive</title>
+
+    <!-- bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
       crossorigin="anonymous"
     />
+
+    <!-- custom css -->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <h1 class="text-center">Welcome to Book Archive</h1>
-    <div class="container">
-      <div class="col-md-6 m-auto py-5">
-        <div class="input-group mb-3">
-          <input
-            id="search-field"
-            type="text"
-            class="form-control"
-            placeholder="Enter your favourite book ..."
-          />
-          <div class="input-group-append">
-            <button type="button" class="btn btn-danger" onclick="searchBook()">
-              Search
-            </button>
+    <main>
+      <h1 class="text-center">Welcome to Book Archive</h1>
+      <div class="container">
+        <div class="col-md-6 m-auto py-5">
+          <div class="input-group mb-3">
+            <input
+              id="search-field"
+              type="text"
+              class="form-control"
+              placeholder="Enter your favourite book ..."
+            />
+            <div class="input-group-append">
+              <button
+                type="button"
+                class="btn btn-danger"
+                onclick="searchBook()"
+              >
+                Search
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <h1 id="results-found"></h1>
+      <h1 id="results-found" class="text-center"></h1>
 
-    <div id="error-message" class="text-center fs-1 fw-bold"></div>
+      <div id="error-message" class="text-center fs-1 fw-bold"></div>
 
-    <div class="text-center">
-      <div id="spinner" class="spinner-border d-none" role="status">
-        <span class="visually-hidden">Loading...</span>
+      <div class="text-center">
+        <div id="spinner" class="spinner-border d-none" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
-    </div>
 
-    <div
-      id="books-container"
-      class="row row-cols-1 row-cols-md-3 g-4 mx-2 mt-5"
-    ></div>
+      <!-- books-container -->
+
+      <div
+        id="books-container"
+        class="row row-cols-1 row-cols-md-3 g-4 mx-2 mt-5"
+      ></div>
+    </main>
+
+    <!-- external -js -->
 
     <script src="./js/script.js"></script>
   </body>
