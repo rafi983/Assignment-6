@@ -13,7 +13,11 @@ const searchBook = () => {
   const searchFieldText = searchField.value;
 
   if (searchFieldText === "") {
-    alert("Search field cannot be empty.");
+    errorDiv.innerText = "Search field cannot be empty.";
+
+    booksContainer.innerHTML = "";
+    resultsFound.innerText = "";
+
     return;
   }
 
