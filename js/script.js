@@ -71,7 +71,7 @@ const loadBook = (books) => {
             }-M.jpg" >  
 
               <h4><span class="fw-bolder">Book:</span> ${
-                book.subject ? book.subject[0] : "A book"
+                book.subject ? book.subject[0] : book.title
               }</h4>   
 
               <h5><span class="fw-bolder">Author Name:</span> ${
